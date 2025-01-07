@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import vitePluginImp from 'vite-plugin-imp'
 
 
 // https://vite.dev/config/
@@ -18,15 +18,22 @@ export default defineConfig(({ mode }) => {
       DEPRECATED_ADAPTER_COMPONENT: true,
     },
     plugins: [
-      // createStyleImportPlugin({
-      //   libs: [
-      //     {
-      //       libraryName: '@antmjs/vantui',
-      //       esModule: true,
-      //       resolveStyle: (name) => `@antmjs/vantui/es/${name}/style`,
-      //     },
-      //   ],
-      // }), react()
+      vitePluginImp({
+        libList: [
+          // {
+          //   libName: 'lodash',
+          //   libDirectory: '',
+          //   camel2DashComponentName: false
+          // },
+          {
+            libName: '@antmjs/vantui',
+            style(name) {
+              // use less
+              return `@antmjs/vantui/es/${name}/style`
+            }
+          },
+        ]
+      }),
       react()
     ],
   }

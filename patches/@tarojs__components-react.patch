@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 3ad988e7e045f2b74d2bfc37c9b5e48f9d406400..a0ee98658f443dfd1611dc6d0103187fa7875d78 100644
+--- a/package.json
++++ b/package.json
+@@ -4,7 +4,7 @@
+   "description": "",
+   "main:h5": "src/index.js",
+   "main": "dist/index.js",
+-  "module": "dist/index.mjs",
++  "module": "dist/index.js",
+   "types": "types/index.d.ts",
+   "sideEffects": [
+     "./dist/components/**/loader.js"
