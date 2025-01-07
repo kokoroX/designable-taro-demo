@@ -20,11 +20,6 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vitePluginImp({
         libList: [
-          // {
-          //   libName: 'lodash',
-          //   libDirectory: '',
-          //   camel2DashComponentName: false
-          // },
           {
             libName: '@antmjs/vantui',
             style(name) {
@@ -36,5 +31,10 @@ export default defineConfig(({ mode }) => {
       }),
       react()
     ],
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    }
   }
 })

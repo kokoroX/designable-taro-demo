@@ -1,0 +1,156 @@
+{
+    "type": "object",
+    "properties": {
+        "nj4nz87fm55": {
+            "type": "void",
+            "title": "Image",
+            "x-component": "Image",
+            "x-validator": [],
+            "x-component-props": {
+                "className": "w-full min-h-36",
+                "src": "https://cdn-pass.tech-done.com/kv_2024_innovation_conference.jpeg",
+                "mode": "widthFix"
+            },
+            "x-decorator-props": {},
+            "x-designable-id": "nj4nz87fm55",
+            "x-index": 0
+        },
+        "_language": {
+            "type": "void",
+            "x-component": "Tabs",
+            "x-component-props": {
+                "type": "card",
+                "className": "w-full py-2",
+                "active": "{{$i18n.language}}",
+                "onChange": "{{function(e) { $i18n && $i18n.changeLanguage(e.detail.name) }}}",
+                "tabs": [
+                    {
+                        "title": "中文",
+                        "name": "zh"
+                    },
+                    {
+                        "title": "English",
+                        "name": "en"
+                    }
+                ]
+            },
+            "properties": {
+                "zh": {
+                    "type": "void",
+                    "x-component": "Tabs.Tab",
+                    "x-component-props": {
+                        "title": "中文"
+                    }
+                },
+                "en": {
+                    "type": "void",
+                    "x-component": "Tabs.Tab",
+                    "x-component-props": {
+                        "title": "English"
+                    }
+                }
+            },
+            "x-index": 1
+        },
+        "rwrmplo14k4": {
+            "type": "void",
+            "x-component": "View",
+            "x-designable-id": "rwrmplo14k4",
+            "properties": {
+                "textView": {
+                    "type": "void",
+                    "x-component": "View",
+                    "x-component-props": {
+                        "className": "px-4 text-sm"
+                    },
+                    "properties": {
+                        "nj4nz87fm55": {
+                            "type": "void",
+                            "x-component": "Text",
+                            "x-validator": [],
+                            "x-component-props": {
+                                "className": "w-full text-center",
+                                "children": "{{$i18n.t('pages.index.document.v3.title')}}"
+                            },
+                            "x-decorator-props": {},
+                            "x-designable-id": "nj4nz87fm55",
+                            "x-index": 0
+                        }
+                    }
+                },
+                "expireTextView": {
+                    "type": "void",
+                    "x-component": "View",
+                    "x-component-props": {
+                        "className": "px-4 mt-2"
+                    },
+                    "x-visible": "{{$campaign.campaign_status != 'AVAILABLE'}}",
+                    "properties": {
+                        "expireNoticeBar": {
+                            "type": "void",
+                            "x-component": "NoticeBar",
+                            "x-visible": "{{$campaign.campaign_status == 'EXPIRED'}}",
+                            "x-component-props": {
+                                "className": "van-notice-bar--closeable rounded overflow-hidden",
+                                "leftIcon": "info-o",
+                                "scrollable": false,
+                                "wrapable": true,
+                                "text": "{{$i18n.t('campaign.expire.tips')}}",
+                                "backgroundColor": "#E60A06",
+                                "color": "#ffffff"
+                            }
+                        },
+                        "inactiveNoticeBar": {
+                            "type": "void",
+                            "x-component": "NoticeBar",
+                            "x-visible": "{{$campaign.campaign_status == 'INACTIVE'}}",
+                            "x-component-props": {
+                                "className": "van-notice-bar--closeable rounded overflow-hidden",
+                                "leftIcon": "info-o",
+                                "scrollable": false,
+                                "wrapable": true,
+                                "text": "{{$i18n.t('campaign.inactive.tips')}}",
+                                "backgroundColor": "#E60A06",
+                                "color": "#ffffff"
+                            }
+                        }
+                    }
+                },
+                "buttonGroup": {
+                    "type": "void",
+                    "x-component": "CellGroup",
+                    "x-component-props": {
+                        "className": "flex flex-col justify-center items-center mt-4"
+                    },
+                    "properties": {
+                        "mainlandButton": {
+                            "type": "void",
+                            "x-component": "Cell",
+                            "x-disabled": "{{$campaign.campaign_status != 'AVAILABLE'}}",
+                            "x-component-props": {
+                                "onClick": "{{function() { $utils.navigateTo({ url: $Routes.大陆 }) }}}",
+                                "title": "{{$i18n.t('apply.mainland.title')}}",
+                                "isLink": true
+                            }
+                        }
+                    }
+                },
+                "noticeBar": {
+                    "type": "void",
+                    "x-component": "NoticeBar",
+                    "x-component-props": {
+                        "className": "van-notice-bar--closeable mt-4",
+                        "leftIcon": "info-o",
+                        "scrollable": false,
+                        "wrapable": true,
+                        "text": "{{$i18n.t('apply.tips.title')}}",
+                        "backgroundColor": "#cccccc",
+                        "color": "#ffffff"
+                    }
+                }
+            },
+            "x-index": 2
+        }
+    },
+    "x-designable-id": "3qbl252u017"
+}
