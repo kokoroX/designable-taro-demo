@@ -1,12 +1,10 @@
-// import { Editor } from './components/Editor'
-// import Taro from '@tarojs/taro'
-import { Button } from '@antmjs/vantui'
 import { FormProvider } from '@formily/react'
 import { SchemaField } from './formily/SchemaField'
 import React, { useMemo } from 'react';
 import { createForm } from '@formily/core';
 // import { View, Button } from '@tarojs/components';
 import schemaJson from './schema.json'
+import { Editor } from './components/Editor'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -54,7 +52,7 @@ function App() {
         </FormProvider>
       </ErrorBoundary>
       {/* <Button style={{ background: 'red' }} onClick={() => console.log(123)}>测试</Button> */}
-      {/* <Editor /> */}
+      <Editor />
     </>
   )
 }

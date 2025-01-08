@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
 import {
   Designer,
   IconWidget,
@@ -33,11 +32,13 @@ import { Space, Button, Radio } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
 import { createForm } from '@formily/core'
 import { useMemo } from 'react'
+import { SchemaEditorWidget } from '@/designable/widgets/SchemaEditorWidget'
+import { Captcha, CaptchaBehavior } from '@/designable/components/Captcha'
 //import { Sandbox } from '@kokoro/designable-react-sandbox'
 
 const RootBehavior = createBehavior({
-  name: 'Root',
-  selector: 'Root',
+  name: 'Form',
+  selector: 'Form',
   designerProps: {
     droppable: true,
   },
@@ -213,7 +214,8 @@ const InputBehavior = createBehavior({
 
 const CardBehavior = createBehavior({
   name: 'Card',
-  selector: 'Card',
+  selector: (node) =>
+    node.componentName === 'Field' && node.props['x-component'] === 'Card',
   designerProps: {
     droppable: true,
     resizable: {
@@ -297,7 +299,7 @@ const CardBehavior = createBehavior({
   },
 })
 
-GlobalRegistry.setDesignerBehaviors([RootBehavior, InputBehavior, CardBehavior])
+GlobalRegistry.setDesignerBehaviors([RootBehavior, InputBehavior, CardBehavior, CaptchaBehavior])
 
 const Input = createResource({
   title: {
@@ -328,9 +330,10 @@ const Card = createResource({
   icon: 'CardSource',
   elements: [
     {
-      componentName: 'Card',
+      componentName: 'Field',
       props: {
         title: '卡片',
+        'x-component': 'Card',
       },
     },
   ],
@@ -401,7 +404,7 @@ const Actions = observer(() => {
   )
 })
 
-const engine = createDesigner()
+const engine = createDesigner({ rootComponentName: 'Form' })
 export const App = () => {
   const form = useMemo(() => createForm(), [])
 
@@ -414,15 +417,15 @@ export const App = () => {
               <CompositePanel.Item title="panels.Component" icon="Component">
                 <ResourceWidget
                   title="sources.Inputs"
-                  sources={[Input, Card]}
+                  sources={[Input, Card, Captcha]}
                 />
                 <ResourceWidget
                   title="sources.Displays"
-                  sources={[Input, Card]}
+                  sources={[]}
                 />
                 <ResourceWidget
                   title="sources.Feedbacks"
-                  sources={[Input, Card]}
+                  sources={[]}
                 />
               </CompositePanel.Item>
               <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
@@ -435,22 +438,12 @@ export const App = () => {
             <WorkspacePanel>
               <ToolbarPanel>
                 <DesignerToolsWidget />
-                <ViewToolsWidget />{' '}
+                <ViewToolsWidget />
               </ToolbarPanel>
               <ViewportPanel>
                 <ViewPanel type="DESIGNABLE">{() => <Content />}</ViewPanel>
                 <ViewPanel type="JSONTREE">
-                  {() => {
-                    return (
-                      <div style={{ overflow: 'hidden', height: '100%' }}>
-                        <MonacoInput
-                          language="javascript"
-                          helpCode="//hello world"
-                          defaultValue={`<div><div>123123<div>123123<div>123123<div>123123</div></div></div></div></div>`}
-                        />
-                      </div>
-                    )
-                  }}
+                  {(tree, onChange) => <SchemaEditorWidget tree={tree} onChange={onChange} />}
                 </ViewPanel>
               </ViewportPanel>
             </WorkspacePanel>
