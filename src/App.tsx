@@ -4,7 +4,8 @@ import React, { useMemo } from 'react';
 import { createForm } from '@formily/core';
 // import { View, Button } from '@tarojs/components';
 import schemaJson from './schema.json'
-import { Editor } from './components/Editor'
+// import { Editor } from './components/Editor'
+import { Editor } from '@kokoro/designable-editor/components/Editor/index.tsx'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

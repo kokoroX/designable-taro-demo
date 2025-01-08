@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.2",
-    "@antmjs/vantui": "npm:@kokoro/antmjs-vantui@3.5.5-beta.20",
+    "@antmjs/vantui": "npm:@kokoro/antmjs-vantui@3.5.5-beta.21",
     "@formily/antd": "npm:@formily/antd-v5@1.2.3",
     "@formily/antd-v5": "1.2.3",
     "@formily/core": "^2.3.2",
@@ -25,6 +25,7 @@
     "@kokoro/designable-react": "1.0.6-alpha.1",
     "@kokoro/designable-react-settings-form": "1.0.6-alpha.1",
     "@kokoro/pass-formily-vant": "workspace:*",
+    "@kokoro/designable-editor": "workspace:*",
     "@tarojs/components": "3.6.35",
     "@tarojs/components-react": "3.6.35",
     "@tarojs/react": "3.6.35",
@@ -54,6 +55,9 @@
   "pnpm": {
     "patchedDependencies": {
       "@tarojs/components-react": "patches/@tarojs__components-react.patch"
+    },
+    "overrides": {
+      "@antmjs/vantui": "npm:@kokoro/antmjs-vantui@3.5.5-beta.21"
     }
   }
 }
