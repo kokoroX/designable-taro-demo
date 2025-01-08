@@ -32,9 +32,16 @@ export default defineConfig(({ mode }) => {
       react()
     ],
     resolve: {
-      alias: {
-        '@': '/src'
-      }
+      alias: [
+        {
+          find: '@',
+          replacement: '/src'
+        },
+        {
+          find: /^@tarojs\/components$/,
+          replacement: '@tarojs/components-react'
+        }
+      ]
     }
   }
 })

@@ -6,12 +6,11 @@ import { DatetimePicker } from "@kokoro/pass-formily-vant/DatetimePicker/index.t
 import { FormItem } from "@kokoro/pass-formily-vant/FormItem/index.tsx"
 import { Input } from "@kokoro/pass-formily-vant/Input/index.tsx"
 import { Picker } from "@kokoro/pass-formily-vant/Picker/index.tsx"
-// import { Radio } from "@kokoro/pass-formily-vant/Radio/index.ts"
+import { Radio } from "@kokoro/pass-formily-vant/Radio/index.ts"
 import { Tabs } from "@kokoro/pass-formily-vant/Tabs/index.tsx"
 import { Uploader } from "@kokoro/pass-formily-vant/Uploader/index.tsx"
-import { SchemaHOC } from "@/hocs/SchemaHOC"
 import { Button, CellGroup, Icon, NoticeBar, Result } from "@antmjs/vantui"
-import { Image, Text, View } from "@tarojs/components-react"
+import { Image, Text, View } from "@tarojs/components"
 import { Cell } from "@kokoro/pass-formily-vant/Cell/index.tsx";
 
 export const SchemaField = createSchemaField({
@@ -19,7 +18,7 @@ export const SchemaField = createSchemaField({
     Input,
     FormItem,
     Picker,
-    // Radio,
+    Radio,
     Uploader,
     Captcha,
     DatetimePicker,
@@ -30,7 +29,7 @@ export const SchemaField = createSchemaField({
     NoticeBar,
     Tabs,
     CellGroup,
-    Cell: SchemaHOC(Cell),
+    Cell,
     Result,
     Icon,
     ArrayItems,

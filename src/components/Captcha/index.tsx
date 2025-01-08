@@ -1,9 +1,10 @@
 import { Button } from '@antmjs/vantui';
-import { View } from '@tarojs/components-react';
+import { View } from '@tarojs/components';
 import { useState } from 'react';
 import Countdown from 'react-countdown'
 
 export const Captcha = ({ className, onClick, title }) => {
+  console.log('title: ', title)
   const [date, setDate] = useState(+new Date());
   const handleClick = () => {
     setDate(Date.now() + 60 * 1000)
