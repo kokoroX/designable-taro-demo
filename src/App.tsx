@@ -49,11 +49,11 @@ function App() {
     <>
       <ErrorBoundary>
         <FormProvider form={form}>
-          <SchemaField schema={schemaJson} scope={{ $i18n: { t: () => '', changeLanguage: () => 1, language: 'cn' }, $campaign: {} }} />
+          {/* <SchemaField schema={schemaJson} scope={{ $i18n: { t: () => '', changeLanguage: () => 1, language: 'cn' }, $campaign: {} }} /> */}
+          <Editor value={schemaJson} />
         </FormProvider>
       </ErrorBoundary>
       {/* <Button style={{ background: 'red' }} onClick={() => console.log(123)}>测试</Button> */}
-      <Editor />
     </>
   )
 }

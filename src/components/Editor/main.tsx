@@ -34,6 +34,7 @@ import { createForm } from '@formily/core'
 import { useMemo } from 'react'
 import { SchemaEditorWidget } from '@/designable/widgets/SchemaEditorWidget'
 import { Captcha, CaptchaBehavior } from '@/designable/components/Captcha'
+import { Field } from '@kokoro/designable-editor/designable/preview-components/Field/preview.js'
 //import { Sandbox } from '@kokoro/designable-react-sandbox'
 
 const RootBehavior = createBehavior({
@@ -299,7 +300,7 @@ const CardBehavior = createBehavior({
   },
 })
 
-GlobalRegistry.setDesignerBehaviors([RootBehavior, InputBehavior, CardBehavior, CaptchaBehavior])
+GlobalRegistry.setDesignerBehaviors([Field.Behavior, RootBehavior, InputBehavior, CardBehavior, CaptchaBehavior])
 
 const Input = createResource({
   title: {
